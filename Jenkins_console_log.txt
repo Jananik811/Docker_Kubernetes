@@ -1,0 +1,302 @@
+Started by user Janani
+Running as SYSTEM
+Building in workspace /var/lib/jenkins/workspace/deploy on container
+No credentials specified
+ > /usr/bin/git rev-parse --is-inside-work-tree # timeout=10
+Fetching changes from the remote Git repository
+ > /usr/bin/git config remote.origin.url https://github.com/Jananik811/Docker_Kubernetes.git # timeout=10
+Fetching upstream changes from https://github.com/Jananik811/Docker_Kubernetes.git
+ > /usr/bin/git --version # timeout=10
+ > /usr/bin/git fetch --tags --progress -- https://github.com/Jananik811/Docker_Kubernetes.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/master^{commit} # timeout=10
+ > /usr/bin/git rev-parse refs/remotes/origin/origin/master^{commit} # timeout=10
+Checking out Revision 1801c5ad9d77647480cbdbf9aa67d24bf3f73ea5 (refs/remotes/origin/master)
+ > /usr/bin/git config core.sparsecheckout # timeout=10
+ > /usr/bin/git checkout -f 1801c5ad9d77647480cbdbf9aa67d24bf3f73ea5 # timeout=10
+Commit message: "Update Dockerfile.txt"
+ > /usr/bin/git rev-list --no-walk 1801c5ad9d77647480cbdbf9aa67d24bf3f73ea5 # timeout=10
+Parsing POMs
+Established TCP socket on 34727
+[deploy on container] $ /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.242.b08-0.el8_1.x86_64/bin/java -cp /var/lib/jenkins/plugins/maven-plugin/WEB-INF/lib/maven35-agent-1.13.jar:/opt/maven/apache-maven-3.6.3/boot/plexus-classworlds-2.6.0.jar:/opt/maven/apache-maven-3.6.3/conf/logging jenkins.maven3.agent.Maven35Main /opt/maven/apache-maven-3.6.3 /var/cache/jenkins/war/WEB-INF/lib/remoting-4.2.jar /var/lib/jenkins/plugins/maven-plugin/WEB-INF/lib/maven35-interceptor-1.13.jar /var/lib/jenkins/plugins/maven-plugin/WEB-INF/lib/maven3-interceptor-commons-1.13.jar 34727
+<===[JENKINS REMOTING CAPACITY]===>channel started
+Executing Maven:  -B -f /var/lib/jenkins/workspace/deploy on container/pom.xml clean install package
+[INFO] Scanning for projects...
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:server:jar:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:webapp:war:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter.
+[WARNING] 
+[WARNING] Some problems were encountered while building the effective model for com.example.maven-project:maven-project:pom:1.0-SNAPSHOT
+[WARNING] Reporting configuration should be done in <reporting> section, not in maven-site-plugin <configuration> as reportPlugins parameter. @ line 51, column 24
+[WARNING] 
+[WARNING] It is highly recommended to fix these problems because they threaten the stability of your build.
+[WARNING] 
+[WARNING] For this reason, future Maven versions might no longer support building such malformed projects.
+[WARNING] 
+[WARNING] The project com.example.maven-project:maven-project:pom:1.0-SNAPSHOT uses prerequisites which is only intended for maven-plugin projects but not for non maven-plugin projects. For such purposes you should use the maven-enforcer-plugin. See https://maven.apache.org/enforcer/enforcer-rules/requireMavenVersion.html
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Build Order:
+[INFO] 
+[INFO] Maven Project                                                      [pom]
+[INFO] Server                                                             [jar]
+[INFO] Webapp                                                             [war]
+[INFO] 
+[INFO] --------------< com.example.maven-project:maven-project >---------------
+[INFO] Building Maven Project 1.0-SNAPSHOT                                [1/3]
+[INFO] --------------------------------[ pom ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ maven-project ---
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ maven-project ---
+[INFO] Installing /var/lib/jenkins/workspace/deploy on container/pom.xml to /var/lib/jenkins/.m2/repository/com/example/maven-project/maven-project/1.0-SNAPSHOT/maven-project-1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] ------------------< com.example.maven-project:server >------------------
+[INFO] Building Server 1.0-SNAPSHOT                                       [2/3]
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ server ---
+[INFO] Deleting /var/lib/jenkins/workspace/deploy on container/server/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy on container/server/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ server ---
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/deploy on container/server/target/classes
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy on container/server/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ server ---
+[INFO] Compiling 1 source file to /var/lib/jenkins/workspace/deploy on container/server/target/test-classes
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.11:test (default-test) @ server ---
+[INFO] Surefire report directory: /var/lib/jenkins/workspace/deploy on container/server/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running com.example.TestGreeter
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.047 sec
+
+Results :
+
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0
+
+[JENKINS] Recording test results
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ server ---
+[INFO] Building jar: /var/lib/jenkins/workspace/deploy on container/server/target/server.jar
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ server ---
+[INFO] Installing /var/lib/jenkins/workspace/deploy on container/server/target/server.jar to /var/lib/jenkins/.m2/repository/com/example/maven-project/server/1.0-SNAPSHOT/server-1.0-SNAPSHOT.jar
+[INFO] Installing /var/lib/jenkins/workspace/deploy on container/server/pom.xml to /var/lib/jenkins/.m2/repository/com/example/maven-project/server/1.0-SNAPSHOT/server-1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy on container/server/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ server ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ server ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy on container/server/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ server ---
+[INFO] Nothing to compile - all classes are up to date
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.11:test (default-test) @ server ---
+[INFO] Skipping execution of surefire because it has already been run for this configuration
+[JENKINS] Recording test results
+[INFO] 
+[INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ server ---
+[INFO] 
+[INFO] ------------------< com.example.maven-project:webapp >------------------
+[INFO] Building Webapp 1.0-SNAPSHOT                                       [3/3]
+[INFO] --------------------------------[ war ]---------------------------------
+[INFO] 
+[INFO] --- maven-clean-plugin:2.5:clean (default-clean) @ webapp ---
+[INFO] Deleting /var/lib/jenkins/workspace/deploy on container/webapp/target
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy on container/webapp/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy on container/webapp/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.11:test (default-test) @ webapp ---
+[INFO] No tests to run.
+[INFO] Surefire report directory: /var/lib/jenkins/workspace/deploy on container/webapp/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+
+Results :
+
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0
+
+[JENKINS] Recording test results
+[INFO] 
+[INFO] --- maven-war-plugin:2.2:war (default-war) @ webapp ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [webapp] in [/var/lib/jenkins/workspace/deploy on container/webapp/target/webapp]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/var/lib/jenkins/workspace/deploy on container/webapp/src/main/webapp]
+[INFO] Webapp assembled in [24 msecs]
+[INFO] Building war: /var/lib/jenkins/workspace/deploy on container/webapp/target/webapp.war
+[INFO] WEB-INF/web.xml already added, skipping
+[INFO] 
+[INFO] --- maven-install-plugin:2.4:install (default-install) @ webapp ---
+[INFO] Installing /var/lib/jenkins/workspace/deploy on container/webapp/target/webapp.war to /var/lib/jenkins/.m2/repository/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
+[INFO] Installing /var/lib/jenkins/workspace/deploy on container/webapp/pom.xml to /var/lib/jenkins/.m2/repository/com/example/maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.pom
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:resources (default-resources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy on container/webapp/src/main/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:compile (default-compile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-resources-plugin:2.5:testResources (default-testResources) @ webapp ---
+[debug] execute contextualize
+[INFO] Using 'utf-8' encoding to copy filtered resources.
+[INFO] skip non existing resourceDirectory /var/lib/jenkins/workspace/deploy on container/webapp/src/test/resources
+[INFO] 
+[INFO] --- maven-compiler-plugin:2.3.2:testCompile (default-testCompile) @ webapp ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- maven-surefire-plugin:2.11:test (default-test) @ webapp ---
+[INFO] No tests to run.
+[INFO] Skipping execution of surefire because it has already been run for this configuration
+[JENKINS] Recording test results
+[INFO] 
+[INFO] --- maven-war-plugin:2.2:war (default-war) @ webapp ---
+[INFO] Packaging webapp
+[INFO] Assembling webapp [webapp] in [/var/lib/jenkins/workspace/deploy on container/webapp/target/webapp]
+[INFO] Processing war project
+[INFO] Copying webapp resources [/var/lib/jenkins/workspace/deploy on container/webapp/src/main/webapp]
+[INFO] Webapp assembled in [1 msecs]
+[INFO] Building war: /var/lib/jenkins/workspace/deploy on container/webapp/target/webapp.war
+[INFO] WEB-INF/web.xml already added, skipping
+[INFO] ------------------------------------------------------------------------
+[INFO] Reactor Summary for Maven Project 1.0-SNAPSHOT:
+[INFO] 
+[INFO] Maven Project ...................................... SUCCESS [  0.672 s]
+[INFO] Server ............................................. SUCCESS [  4.816 s]
+[INFO] Webapp ............................................. SUCCESS [  1.168 s]
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  8.383 s
+[INFO] Finished at: 2020-04-04T11:00:18Z
+[INFO] ------------------------------------------------------------------------
+Waiting for Jenkins to finish collecting data
+[JENKINS] Archiving /var/lib/jenkins/workspace/deploy on container/webapp/pom.xml to com.example.maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.pom
+[JENKINS] Archiving /var/lib/jenkins/workspace/deploy on container/webapp/target/webapp.war to com.example.maven-project/webapp/1.0-SNAPSHOT/webapp-1.0-SNAPSHOT.war
+[JENKINS] Archiving /var/lib/jenkins/workspace/deploy on container/server/pom.xml to com.example.maven-project/server/1.0-SNAPSHOT/server-1.0-SNAPSHOT.pom
+[JENKINS] Archiving /var/lib/jenkins/workspace/deploy on container/server/target/server.jar to com.example.maven-project/server/1.0-SNAPSHOT/server-1.0-SNAPSHOT.jar
+[JENKINS] Archiving /var/lib/jenkins/workspace/deploy on container/pom.xml to com.example.maven-project/maven-project/1.0-SNAPSHOT/maven-project-1.0-SNAPSHOT.pom
+channel stopped
+SSH: Connecting from host [jenkins]
+SSH: Connecting with configuration [docker] ...
+SSH: EXEC: STDOUT/STDERR from command [cd /home/dockeradmin; docker build -t simple-image .;
+docker run -d --name simple-container -p 8090:8080 simple-image;] ...
+Sending build context to Docker daemon  29.18kB
+
+Step 1/5 : From tomcat:8.0
+8.0: Pulling from library/tomcat
+f189db1b88b3: Pulling fs layer
+3d06cf2f1b5e: Pulling fs layer
+edd0da9e3091: Pulling fs layer
+eb7768aae14e: Pulling fs layer
+e2780f585e0f: Pulling fs layer
+e5ed720afeba: Pulling fs layer
+d9e134700cfc: Pulling fs layer
+e4804b33d02a: Pulling fs layer
+b9df0c24315e: Pulling fs layer
+49fdae8eaa20: Pulling fs layer
+1aea3d9a32e6: Pulling fs layer
+eb7768aae14e: Waiting
+e2780f585e0f: Waiting
+e5ed720afeba: Waiting
+d9e134700cfc: Waiting
+e4804b33d02a: Waiting
+b9df0c24315e: Waiting
+49fdae8eaa20: Waiting
+1aea3d9a32e6: Waiting
+edd0da9e3091: Verifying Checksum
+edd0da9e3091: Download complete
+3d06cf2f1b5e: Verifying Checksum
+3d06cf2f1b5e: Download complete
+eb7768aae14e: Verifying Checksum
+eb7768aae14e: Download complete
+e2780f585e0f: Verifying Checksum
+e2780f585e0f: Download complete
+f189db1b88b3: Download complete
+d9e134700cfc: Verifying Checksum
+d9e134700cfc: Download complete
+e4804b33d02a: Verifying Checksum
+e4804b33d02a: Download complete
+b9df0c24315e: Verifying Checksum
+b9df0c24315e: Download complete
+1aea3d9a32e6: Verifying Checksum
+1aea3d9a32e6: Download complete
+49fdae8eaa20: Verifying Checksum
+49fdae8eaa20: Download complete
+e5ed720afeba: Verifying Checksum
+e5ed720afeba: Download complete
+f189db1b88b3: Pull complete
+3d06cf2f1b5e: Pull complete
+edd0da9e3091: Pull complete
+eb7768aae14e: Pull complete
+e2780f585e0f: Pull complete
+e5ed720afeba: Pull complete
+d9e134700cfc: Pull complete
+e4804b33d02a: Pull complete
+b9df0c24315e: Pull complete
+49fdae8eaa20: Pull complete
+1aea3d9a32e6: Pull complete
+Digest: sha256:8ecb10948deb32c34aeadf7bf95d12a93fbd3527911fa629c1a3e7823b89ce6f
+Status: Downloaded newer image for tomcat:8.0
+ ---> ef6a7c98d192
+Step 2/5 : MAINTAINER "Janani K"
+ ---> Running in 41bee16ffd29
+Removing intermediate container 41bee16ffd29
+ ---> 22a8dcd44c78
+Step 3/5 : RUN mkdir /usr/local/tomcat/webapps/Sample
+ ---> Running in 55e1e293919e
+Removing intermediate container 55e1e293919e
+ ---> 6658bbc3ed10
+Step 4/5 : COPY ./* /usr/local/tomcat/webapps/Sample/
+ ---> 37235bb7e5ff
+Step 5/5 : WORKDIR /usr/local/tomcat/webapps/
+ ---> Running in f14bd7ba1d88
+Removing intermediate container f14bd7ba1d88
+ ---> 3203df15ae80
+Successfully built 3203df15ae80
+Successfully tagged simple-image:latest
+bd67ec78023a58fc6ef9781105049f65979ec98f74a5e40a6b0695defe487758
+SSH: EXEC: completed after 21,413 ms
+SSH: Disconnecting configuration [docker] ...
+SSH: Transferred 2 file(s)
+Finished: SUCCESS
