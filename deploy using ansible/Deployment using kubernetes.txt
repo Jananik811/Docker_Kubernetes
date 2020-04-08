@@ -1,0 +1,81 @@
+Started by user Janani
+Running as SYSTEM
+Building in workspace /var/lib/jenkins/workspace/deploy_on_kubernetes
+SSH: Connecting from host [jenkins]
+SSH: Connecting with configuration [Ansible] ...
+SSH: EXEC: STDOUT/STDERR from command [ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/deployment.yml;
+ansible-playbook -i /opt/kubernetes/hosts /opt/kubernetes/service.yml] ...
+[DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to 
+allow bad characters in group names by default, this will change, but still be 
+user configurable on deprecation. This feature will be removed in version 2.10.
+ Deprecation warnings can be disabled by setting deprecation_warnings=False in 
+ansible.cfg.
+[WARNING]: Invalid characters were found in group names but not replaced, use
+-vvvv to see details
+
+PLAY [Create pods using deployment] ********************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [34.71.213.117]
+
+TASK [create a deployment] *****************************************************
+changed: [34.71.213.117]
+
+PLAY RECAP *********************************************************************
+34.71.213.117              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+[DEPRECATION WARNING]: The TRANSFORM_INVALID_GROUP_CHARS settings is set to 
+allow bad characters in group names by default, this will change, but still be 
+user configurable on deprecation. This feature will be removed in version 2.10.
+ Deprecation warnings can be disabled by setting deprecation_warnings=False in 
+ansible.cfg.
+[WARNING]: Invalid characters were found in group names but not replaced, use
+-vvvv to see details
+PLAY [create a service for deployment] *****************************************
+
+TASK [Gathering Facts] *********************************************************
+ok: [34.71.213.117]
+
+TASK [create a service] ********************************************************
+changed: [34.71.213.117]
+
+PLAY RECAP *********************************************************************
+34.71.213.117              : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+
+SSH: EXEC: completed after 10,006 ms
+SSH: Disconnecting configuration [Ansible] ...
+SSH: Transferred 0 file(s)
+Finished: SUCCESS
+
+
+Post executing the jenkins job, pods and services are successfully created in kbernetes master.
+ 
+root@docker:~#
+root@docker:~# kubectl get deployments
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+first-deployment   2/2     2            2           3m38s
+root@docker:~# kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+first-deployment-59f78b4d7c-8wvdl   1/1     Running   0          3m41s
+first-deployment-59f78b4d7c-l9mnz   1/1     Running   0          3m41s
+root@docker:~# kubectl get services
+NAME            TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
+first-service   LoadBalancer   10.105.43.152   <pending>     8080:31200/TCP   3m41s
+kubernetes      ClusterIP      10.96.0.1       <none>        443/TCP          50m
+
+
+Since we are using replication factor as 2, the pods will replicate in-case of deletion.
+
+root@docker:~# kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+first-deployment-59f78b4d7c-8wvdl   1/1     Running   0          5m58s
+first-deployment-59f78b4d7c-l9mnz   1/1     Running   0          5m58s
+root@docker:~# kubectl delete pod first-deployment-59f78b4d7c-8wvdl
+pod "first-deployment-59f78b4d7c-8wvdl" deleted
+
+root@docker:~#
+root@docker:~# kubectl get pods
+NAME                                READY   STATUS    RESTARTS   AGE
+first-deployment-59f78b4d7c-8k7jb   1/1     Running   0          24s
+first-deployment-59f78b4d7c-l9mnz   1/1     Running   0          6m32s
+
